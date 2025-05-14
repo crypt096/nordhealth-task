@@ -3,6 +3,7 @@
     v-model="password"
     :type="showPassword ? 'text' : 'password'"
     label="Password"
+    expand
     required
   >
     <provet-button
