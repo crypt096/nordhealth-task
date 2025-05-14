@@ -11,7 +11,7 @@
           <provet-button target="_blank" href="https://github.com/crypt096/nordhealth-task" square variant="plain" size="m">
             <provet-icon name="generic-github" size="m" />
             <provet-visually-hidden>
-              View the code on GitHub
+              Visit my GitHub repo
             </provet-visually-hidden>
           </provet-button>
           © 2025 Aleksandar Cvjetan
