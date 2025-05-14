@@ -1,12 +1,13 @@
 <template>
-    <provet-header>
-      <h1 class="n-typescale-l">Nordhealth Task</h1>
-    </provet-header>
-    <main>
-      <slot />
-    </main>
-    <provet-footer>
-      <provet-stack gap="none" direction="horizontal" justify-content="end" align-items="center">
+    <provet-stack>
+      <provet-header>
+        <h1 class="n-typescale-l">Nordhealth Task</h1>
+      </provet-header>
+      <main>
+        <slot />
+      </main>
+      <provet-footer>
+        <provet-stack gap="none" direction="horizontal" justify-content="end" align-items="center">
           <provet-button target="_blank" href="https://github.com/crypt096/nordhealth-task" square variant="plain" size="m">
             <provet-icon name="generic-github" size="m" />
             <provet-visually-hidden>
@@ -14,8 +15,9 @@
             </provet-visually-hidden>
           </provet-button>
           © 2025 Aleksandar Cvjetan
-      </provet-stack>
-    </provet-footer>
+        </provet-stack>
+      </provet-footer>
+    </provet-stack>
 </template>
 
 <script setup lang="ts">
