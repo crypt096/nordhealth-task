@@ -3,6 +3,7 @@
     v-model="password"
     :type="showPassword ? 'text' : 'password'"
     label="Password"
+    error="Test error message"
     expand
     required
   >
