@@ -2,7 +2,9 @@
     <provet-header>
       <h1 class="n-typescale-l">Nordhealth Task</h1>
     </provet-header>
-    <slot />
+    <main>
+      <slot />
+    </main>
     <provet-footer>
       <provet-stack gap="none" direction="horizontal" justify-content="end" align-items="center">
           <provet-button target="_blank" href="https://github.com/crypt096/nordhealth-task" square variant="plain" size="m">
