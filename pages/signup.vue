@@ -6,16 +6,18 @@
         <provet-stack gap="l">
           <EmailInput />
           <PasswordInput />
+          <PasswordInput />
+          <provet-checkbox label="I would like to receive occasional product updates and announcements"></provet-checkbox>
           <provet-button type="submit" expand variant="primary">Sign up</provet-button>
         </provet-stack>
       </form>
     </provet-card>
   </provet-stack>
-
 </template>
 
 <script setup lang="ts">
 import '@provetcloud/web-components/lib/Stack';
 import '@provetcloud/web-components/lib/Button';
 import '@provetcloud/web-components/lib/Card';
+import '@provetcloud/web-components/lib/Checkbox';
 </script>
