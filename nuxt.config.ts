@@ -13,5 +13,15 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ]
     }
+  },
+  css: ['@provetcloud/css'],
+  vite: {
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('-')
+        }
+      }
+    }
   }
 })
