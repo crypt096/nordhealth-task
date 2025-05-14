@@ -1,5 +1,10 @@
 <template>
-  <provet-input v-model="password" :type="showPassword ? 'text' : 'password'" label="Password">
+  <provet-input
+    v-model="password"
+    :type="showPassword ? 'text' : 'password'"
+    label="Password"
+    required
+  >
     <provet-button
       slot="end"
       square
