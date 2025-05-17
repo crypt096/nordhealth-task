@@ -4,14 +4,14 @@
       <h1 slot="header" class="n-typescale-l">Create an account</h1>
       <form @submit.prevent="onSubmit">
         <provet-stack gap="l">
-          <EmailInput
+          <EmailField
             v-model="email"
             :error="emailError"
             label="Email"
             placeholder="user@example.com"
           />
-          <PasswordInput label="Password" v-model="password" :error="passwordError" />
-          <PasswordInput
+          <PasswordField label="Password" v-model="password" :error="passwordError" />
+          <PasswordField
             label="Confirm password"
             v-model="confirmPassword"
             :error="confirmPasswordError"
@@ -35,6 +35,9 @@ import '@provetcloud/web-components/lib/Button';
 import '@provetcloud/web-components/lib/Card';
 import '@provetcloud/web-components/lib/Checkbox';
 import '@provetcloud/web-components/lib/Divider';
+
+import EmailField from '~/components/EmailField.vue';
+import PasswordField from '~/components/PasswordField.vue';
 
 import { useForm, useField } from 'vee-validate';
 import { useSignupSchema } from '~/composables/useSignupSchema';
