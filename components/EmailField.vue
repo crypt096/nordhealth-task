@@ -1,5 +1,6 @@
 <template>
   <provet-input
+    :id="inputId"
     :label="label"
     :placeholder="placeholder"
     :error="error || undefined"
@@ -24,6 +25,8 @@ interface Props {
 }
 
 const { label, error, modelValue, placeholder } = defineProps<Props>();
+
+const inputId = useId();
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;

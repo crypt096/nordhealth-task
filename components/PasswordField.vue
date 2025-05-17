@@ -1,6 +1,7 @@
 <template>
   <provet-input
     v-model="password"
+    :id="inputId"
     :type="isPasswordVisible ? 'text' : 'password'"
     :label="label"
     :error="error || undefined"
@@ -12,6 +13,7 @@
       square
       slot="end"
       aria-label="Toggle password visibility"
+      :aria-describedby="`${inputId}-tooltip`"
       :aria-pressed="isPasswordVisible.toString()"
       @click="togglePasswordVisibility"
     >
@@ -22,7 +24,7 @@
       />
     </provet-button>
   </provet-input>
-  <provet-tooltip :id="`${inputId}-tooltip`">{{ passwordToggleLabel }}}</provet-tooltip>
+  <provet-tooltip :id="`${inputId}-tooltip`">{{ passwordToggleLabel }}</provet-tooltip>
 </template>
 
 <script setup lang="ts">
