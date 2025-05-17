@@ -1,9 +1,9 @@
 <template>
   <provet-input
     v-model="password"
-    :type="showPassword ? 'text' : 'password'"
-    label="Password"
-    error="Test error message"
+    :type="isPasswordVisible ? 'text' : 'password'"
+    :label="label"
+    :error="error || undefined"
     expand
     required
   >
@@ -14,7 +14,11 @@
       :aria-pressed="showPassword.toString()"
       @click="togglePasswordVisibility"
     >
-      <provet-icon :name="showPassword ? 'interface-edit-off' : 'interface-edit-on'" size="m" label="Toggle password visibility" />
+      <provet-icon
+        :name="showPassword ? 'interface-edit-off' : 'interface-edit-on'"
+        size="m"
+        label="Toggle password visibility"
+      />
     </provet-button>
   </provet-input>
   <provet-tooltip :id="`${inputId}-tooltip`">Show / hide password</provet-tooltip>
@@ -27,11 +31,18 @@ import '@provetcloud/web-components/lib/Button';
 import '@provetcloud/web-components/lib/Icon';
 import '@provetcloud/web-components/lib/Tooltip';
 
+interface InputProps {
+  label: string;
+  error?: string;
+}
+
+const props = defineProps<InputProps>();
+
 const password = ref('');
-const showPassword = ref(false);
+const isPasswordVisible = ref(false);
 const inputId = useId();
 
 const togglePasswordVisibility = () => {
-  showPassword.value = !showPassword.value;
+  isPasswordVisible.value = !isPasswordVisible.value;
 };
 </script>
