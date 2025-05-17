@@ -22,7 +22,7 @@ interface EmailProps {
   error?: string;
 }
 
-const props = defineProps<EmailProps>();
+defineProps<EmailProps>();
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
