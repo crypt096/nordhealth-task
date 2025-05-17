@@ -8,13 +8,13 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Nordhealth Task',
+      title: 'NordHealth Task',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ]
     }
   },
-  css: ['@provetcloud/css'],
+  css: ['@/assets/css/main.css', '@provetcloud/css'],
   vite: {
     vue: {
       template: {

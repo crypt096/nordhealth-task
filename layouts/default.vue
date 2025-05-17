@@ -1,7 +1,7 @@
 <template>
     <provet-stack>
       <provet-header>
-        <h1 class="n-typescale-l">Nordhealth Task</h1>
+        <h1 class="n-typescale-l">NordHealth Task</h1>
         <ThemeToggle slot="end" />
       </provet-header>
       <main>
