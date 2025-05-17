@@ -5,8 +5,11 @@
       <form action="#">
         <provet-stack gap="l">
           <EmailInput />
+
           <PasswordInput />
+
           <PasswordInput />
+
           <provet-checkbox label="I would like to receive occasional product updates and announcements"></provet-checkbox>
           <provet-button type="submit" expand variant="primary">Sign up</provet-button>
         </provet-stack>
