@@ -34,13 +34,26 @@ import '@provetcloud/web-components/lib/Tooltip';
 interface InputProps {
   label: string;
   error?: string;
+  modelValue: string;
 }
 
-const { label, error } = defineProps<InputProps>();
+const { label, error, modelValue } = defineProps<InputProps>();
 
-const password = ref('');
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string): void;
+}>();
+
+const password = ref(modelValue);
 const isPasswordVisible = ref(false);
 const inputId = useId();
+
+watch(() => modelValue, (val) => {
+  if (val !== password.value) password.value = val;
+});
+
+watch(password, (val) => {
+  if (val !== modelValue) emit('update:modelValue', val);
+});
 
 const togglePasswordVisibility = () => {
   isPasswordVisible.value = !isPasswordVisible.value;
