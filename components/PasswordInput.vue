@@ -11,17 +11,17 @@
       square
       slot="end"
       aria-label="Toggle password visibility"
-      :aria-pressed="showPassword.toString()"
+      :aria-pressed="isPasswordVisible.toString()"
       @click="togglePasswordVisibility"
     >
       <provet-icon
-        :name="showPassword ? 'interface-edit-off' : 'interface-edit-on'"
+        :name="isPasswordVisible ? 'interface-edit-off' : 'interface-edit-on'"
         size="m"
         label="Toggle password visibility"
       />
     </provet-button>
   </provet-input>
-  <provet-tooltip :id="`${inputId}-tooltip`">Show / hide password</provet-tooltip>
+  <provet-tooltip :id="`${inputId}-tooltip`">{{ passwordToggleLabel }}}</provet-tooltip>
 </template>
 
 <script setup lang="ts">
@@ -36,7 +36,7 @@ interface InputProps {
   error?: string;
 }
 
-const props = defineProps<InputProps>();
+const { label, error } = defineProps<InputProps>();
 
 const password = ref('');
 const isPasswordVisible = ref(false);
@@ -45,4 +45,8 @@ const inputId = useId();
 const togglePasswordVisibility = () => {
   isPasswordVisible.value = !isPasswordVisible.value;
 };
+
+const passwordToggleLabel = computed(() =>
+  isPasswordVisible.value ? 'Hide password' : 'Show password'
+);
 </script>
