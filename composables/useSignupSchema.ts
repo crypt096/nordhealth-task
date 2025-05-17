@@ -1,16 +1,22 @@
 import { string, object, ref, boolean } from 'yup';
 
+const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()[\]{}|\\/:;<>,.+~=_\-])[A-Za-z\d@$!%*?&#^()[\]{}|\\/:;<>,.+~=_\-]{8,}$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 export const useSignupSchema = () => {
   return object({
     email: string()
-      .email('Enter a valid email')
-      .required('Email is required'),
+      .required('Email is required')
+      .matches(emailRegex, 'Enter a valid email address'),
     password: string()
-      .min(8, 'Password must be at least 8 characters')
-      .required('Password is required'),
+      .required('Password is required')
+      .matches(
+        strongPasswordRegex,
+        'Password must be at least 8 characters long and include uppercase, lowercase, number, and special character'
+      ),
     confirmPassword: string()
-      .oneOf([ref('password')], 'Passwords must match')
-      .required('Confirm your password'),
+      .required('Confirm your password')
+      .oneOf([ref('password')], 'Passwords must match'),
     acceptMarketing: boolean(),
   });
 };
