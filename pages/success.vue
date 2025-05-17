@@ -6,8 +6,8 @@
       </h1>
 
       <provet-stack gap="l">
-        <provet-banner variant="success" class="flex">
-          Account created for email (example@email.com), you're ready to get started.
+        <provet-banner variant="success">
+          Account created for email (example@email.com). You're ready to get started.
         </provet-banner>
 
         <provet-divider />
