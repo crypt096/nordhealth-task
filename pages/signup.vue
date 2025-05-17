@@ -22,7 +22,7 @@
             label="I would like to receive occasional product updates and announcements"
           />
           <provet-divider></provet-divider>
-          <provet-button type="submit" expand variant="primary">Sign up</provet-button>
+          <provet-button variant="primary" type="submit" :loading="loading" :disabled="loading" expand >Sign up</provet-button>
         </provet-stack>
       </form>
     </provet-card>
@@ -43,6 +43,8 @@ import CheckboxField from '~/components/CheckboxField.vue';
 import { useForm, useField } from 'vee-validate';
 import { useSignupSchema } from '~/composables/useSignupSchema';
 
+const loading = ref(false);
+const router = useRouter();
 const schema = useSignupSchema();
 
 const { handleSubmit } = useForm({
@@ -61,7 +63,13 @@ const { value: confirmPassword, errorMessage: confirmPasswordError } =
   useField<string>('confirmPassword');
 const { value: acceptMarketing } = useField<boolean>('acceptMarketing');
 
-const onSubmit = handleSubmit(values => {
-  console.log('Form submitted:', values);
+const onSubmit = handleSubmit(async values => {
+  loading.value = true;
+  try {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    await router.push('/success');
+  } finally {
+    loading.value = false;
+  }
 });
 </script>
