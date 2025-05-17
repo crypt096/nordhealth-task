@@ -14,7 +14,7 @@
       aria-label="Toggle password visibility"
       :aria-pressed="showPassword.toString()"
     >
-      <provet-icon :name="showPassword ? 'interface-edit-off' : 'interface-edit-on'" size="m" />
+      <provet-icon :name="showPassword ? 'interface-edit-off' : 'interface-edit-on'" size="m" label="Toggle password visibility" />
     </provet-button>
   </provet-input>
 </template>
