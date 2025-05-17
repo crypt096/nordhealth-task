@@ -32,9 +32,9 @@ import '@provetcloud/web-components/lib/Icon';
 import '@provetcloud/web-components/lib/Tooltip';
 
 interface InputProps {
+  modelValue: string;
   label: string;
   error?: string;
-  modelValue: string;
 }
 
 const { label, error, modelValue } = defineProps<InputProps>();
