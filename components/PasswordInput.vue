@@ -8,11 +8,11 @@
     required
   >
     <provet-button
-      slot="end"
       square
-      @click="togglePasswordVisibility"
+      slot="end"
       aria-label="Toggle password visibility"
       :aria-pressed="showPassword.toString()"
+      @click="togglePasswordVisibility"
     >
       <provet-icon :name="showPassword ? 'interface-edit-off' : 'interface-edit-on'" size="m" label="Toggle password visibility" />
     </provet-button>
