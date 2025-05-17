@@ -8,14 +8,14 @@
         <slot />
       </main>
       <provet-footer>
-        <provet-stack gap="none" direction="horizontal" justify-content="end" align-items="center">
+        <provet-stack gap="none" direction="horizontal" justify-content="space-between" align-items="center">
           <provet-button target="_blank" href="https://github.com/crypt096/nordhealth-task" square variant="plain" size="m">
             <provet-icon name="generic-github" size="m" />
             <provet-visually-hidden>
               Visit my GitHub repo
             </provet-visually-hidden>
           </provet-button>
-          © 2025 Aleksandar Cvjetan
+          <p class="n-typescale-m">© 2025 Aleksandar Cvjetan</p>
         </provet-stack>
       </provet-footer>
     </provet-stack>
