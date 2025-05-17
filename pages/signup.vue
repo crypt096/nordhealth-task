@@ -16,11 +16,7 @@
             v-model="confirmPassword"
             :error="confirmPasswordError"
           />
-          <provet-checkbox
-            :checked="acceptMarketing"
-            @change="acceptMarketing = $event.target.checked"
-            label="I would like to receive occasional product updates and announcements"
-          />
+          <CheckboxField v-model="acceptMarketing" label="I would like to receive to receive occasional product updates and announcements" />
           <provet-divider></provet-divider>
           <provet-button type="submit" expand variant="primary">Sign up</provet-button>
         </provet-stack>
@@ -38,6 +34,7 @@ import '@provetcloud/web-components/lib/Divider';
 
 import EmailField from '~/components/EmailField.vue';
 import PasswordField from '~/components/PasswordField.vue';
+import CheckboxField from '~/components/CheckboxField.vue';
 
 import { useForm, useField } from 'vee-validate';
 import { useSignupSchema } from '~/composables/useSignupSchema';
