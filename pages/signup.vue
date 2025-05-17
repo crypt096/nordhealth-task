@@ -16,7 +16,10 @@
             v-model="confirmPassword"
             :error="confirmPasswordError"
           />
-          <CheckboxField v-model="acceptMarketing" label="I would like to receive occasional product updates and announcements" />
+          <CheckboxField
+            v-model="acceptMarketing"
+            label="I would like to receive occasional product updates and announcements"
+          />
           <provet-divider></provet-divider>
           <provet-button type="submit" expand variant="primary">Sign up</provet-button>
         </provet-stack>
