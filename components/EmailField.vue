@@ -34,11 +34,14 @@ const emit = defineEmits<{
 
 const email = ref(modelValue);
 
-watch(() => modelValue, (val) => {
-  if (val !== email.value) email.value = val;
-});
+watch(
+  () => modelValue,
+  val => {
+    if (val !== email.value) email.value = val;
+  }
+);
 
-watch(email, (val) => {
+watch(email, val => {
   if (val !== modelValue) emit('update:modelValue', val);
 });
 

@@ -51,11 +51,14 @@ const password = ref(modelValue);
 const isPasswordVisible = ref(false);
 const inputId = useId();
 
-watch(() => modelValue, (val) => {
-  if (val !== password.value) password.value = val;
-});
+watch(
+  () => modelValue,
+  val => {
+    if (val !== password.value) password.value = val;
+  }
+);
 
-watch(password, (val) => {
+watch(password, val => {
   if (val !== modelValue) emit('update:modelValue', val);
 });
 

@@ -10,7 +10,12 @@
             label="Email"
             placeholder="you@example.com"
           />
-          <PasswordField label="Password" v-model="password" :error="passwordError" placeholder="Enter your password" />
+          <PasswordField
+            label="Password"
+            v-model="password"
+            :error="passwordError"
+            placeholder="Enter your password"
+          />
           <PasswordField
             label="Confirm password"
             v-model="confirmPassword"
@@ -22,7 +27,14 @@
             label="I would like to receive occasional product updates and announcements"
           />
           <provet-divider></provet-divider>
-          <provet-button variant="primary" type="submit" :loading="loading" :disabled="loading" expand >Sign up</provet-button>
+          <provet-button
+            variant="primary"
+            type="submit"
+            :loading="loading"
+            :disabled="loading"
+            expand
+            >Sign up</provet-button
+          >
         </provet-stack>
       </form>
     </provet-card>

@@ -1,9 +1,7 @@
 <template>
   <provet-stack class="n-container-xxs" style="margin: var(--n-space-xl) auto">
     <provet-card>
-      <h1 slot="header">
-        Account Created Successfully
-      </h1>
+      <h1 slot="header">Account Created Successfully</h1>
 
       <provet-stack gap="l">
         <provet-banner variant="success">
@@ -14,11 +12,7 @@
       </provet-stack>
 
       <provet-stack slot="footer" justify-content="center" align-items="center">
-        <provet-button
-          variant="primary"
-          size="m"
-          @click="signOut"
-        >
+        <provet-button variant="primary" size="m" @click="signOut">
           Sign out
           <provet-icon slot="end" name="interface-logout" />
         </provet-button>
@@ -28,41 +22,41 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router';
+import { onMounted, ref } from 'vue';
 
-import '@provetcloud/web-components/lib/Card'
-import '@provetcloud/web-components/lib/Button'
-import '@provetcloud/web-components/lib/Divider'
-import '@provetcloud/web-components/lib/Banner'
-import '@provetcloud/web-components/lib/Icon'
-import '@provetcloud/web-components/lib/Stack'
+import '@provetcloud/web-components/lib/Card';
+import '@provetcloud/web-components/lib/Button';
+import '@provetcloud/web-components/lib/Divider';
+import '@provetcloud/web-components/lib/Banner';
+import '@provetcloud/web-components/lib/Icon';
+import '@provetcloud/web-components/lib/Stack';
 
-const router = useRouter()
-const email = ref<string | null>(null)
+const router = useRouter();
+const email = ref<string | null>(null);
 
 onMounted(() => {
-  const stored = localStorage.getItem('signup-data')
+  const stored = localStorage.getItem('signup-data');
   if (!stored) {
-    router.replace('/signup')
-    return
+    router.replace('/signup');
+    return;
   }
 
   try {
-    const parsed = JSON.parse(stored)
+    const parsed = JSON.parse(stored);
     if (!parsed.email) {
-      router.replace('/signup')
-      return
+      router.replace('/signup');
+      return;
     }
 
-    email.value = parsed.email
+    email.value = parsed.email;
   } catch {
-    router.replace('/signup')
+    router.replace('/signup');
   }
-})
+});
 
 const signOut = () => {
-  localStorage.removeItem('signup-data')
-  router.replace('/signup')
-}
+  localStorage.removeItem('signup-data');
+  router.replace('/signup');
+};
 </script>

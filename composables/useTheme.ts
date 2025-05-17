@@ -1,39 +1,39 @@
-import { useHead, useState } from '#imports'
-import { computed } from 'vue'
+import { useHead, useState } from '#imports';
+import { computed } from 'vue';
 
-type Modes = 'light' | 'dark'
+type Modes = 'light' | 'dark';
 
 export function useTheme() {
-  const storageKey = 'color-mode'
+  const storageKey = 'color-mode';
 
   const preference = useState<Modes>('color-mode', () => {
     if (process) {
-      const saved = localStorage.getItem(storageKey) as Modes | null
-      return saved ?? 'light'
+      const saved = localStorage.getItem(storageKey) as Modes | null;
+      return saved ?? 'light';
     }
-    return 'light'
-  })
+    return 'light';
+  });
 
   const themes: Record<Modes, string> = {
     light: 'https://nordcdn.net/ds/provetcloud/themes/1.0.0/provet.css',
     dark: 'https://nordcdn.net/ds/provetcloud/themes/1.0.0/provet-dark.css',
-  }
+  };
 
-  const isDark = computed(() => preference.value === 'dark')
+  const isDark = computed(() => preference.value === 'dark');
 
   const darkModeLabel = computed(() =>
     isDark.value ? 'Switch to light mode' : 'Switch to dark mode'
-  )
+  );
 
   function savePreference(value: Modes) {
-    preference.value = value
+    preference.value = value;
     if (process) {
-      localStorage.setItem(storageKey, value)
+      localStorage.setItem(storageKey, value);
     }
   }
 
   function toggleDark() {
-    savePreference(isDark.value ? 'light' : 'dark')
+    savePreference(isDark.value ? 'light' : 'dark');
   }
 
   useHead({
@@ -51,12 +51,12 @@ export function useTheme() {
         href: () => themes[preference.value],
       },
     ],
-  })
+  });
 
   return {
     preference,
     isDark,
     darkModeLabel,
     toggleDark,
-  }
+  };
 }
