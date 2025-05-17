@@ -3,7 +3,7 @@
     :label="label"
     :placeholder="placeholder"
     :error="error || undefined"
-    :value="modelValue"
+    :value="email"
     @input="onInput"
     expand
     required
@@ -13,23 +13,34 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue';
 import '@provetcloud/web-components/lib/Input';
 
-interface EmailProps {
+interface Props {
   modelValue: string;
-  label?: string;
+  label: string;
   placeholder?: string;
   error?: string;
 }
 
-defineProps<EmailProps>();
+const { label, error, modelValue, placeholder } = defineProps<Props>();
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
 }>();
 
+const email = ref(modelValue);
+
+watch(() => modelValue, (val) => {
+  if (val !== email.value) email.value = val;
+});
+
+watch(email, (val) => {
+  if (val !== modelValue) emit('update:modelValue', val);
+});
+
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  emit('update:modelValue', target.value);
+  email.value = target.value;
 };
 </script>
