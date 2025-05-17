@@ -4,6 +4,7 @@
     :type="isPasswordVisible ? 'text' : 'password'"
     :label="label"
     :error="error || undefined"
+    :placeholder="placeholder"
     expand
     required
   >
@@ -33,11 +34,12 @@ import '@provetcloud/web-components/lib/Tooltip';
 
 interface InputProps {
   modelValue: string;
+  placeholder?: string;
   label: string;
   error?: string;
 }
 
-const { label, error, modelValue } = defineProps<InputProps>();
+const { modelValue, placeholder, label, error } = defineProps<InputProps>();
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;

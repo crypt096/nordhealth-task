@@ -8,13 +8,14 @@
             v-model="email"
             :error="emailError"
             label="Email"
-            placeholder="user@example.com"
+            placeholder="you@example.com"
           />
-          <PasswordField label="Password" v-model="password" :error="passwordError" />
+          <PasswordField label="Password" v-model="password" :error="passwordError" placeholder="Enter your password" />
           <PasswordField
             label="Confirm password"
             v-model="confirmPassword"
             :error="confirmPasswordError"
+            placeholder="Re-enter your password"
           />
           <CheckboxField
             v-model="acceptMarketing"
