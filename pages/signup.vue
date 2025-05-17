@@ -17,7 +17,8 @@
             :error="confirmPasswordError"
           />
           <provet-checkbox
-            v-model="acceptMarketing"
+            :checked="acceptMarketing"
+            @change="acceptMarketing = $event.target.checked"
             label="I would like to receive occasional product updates and announcements"
           />
           <provet-button type="submit" expand variant="primary">Sign up</provet-button>
@@ -44,6 +45,7 @@ const { handleSubmit } = useForm({
     email: '',
     password: '',
     confirmPassword: '',
+    acceptMarketing: false,
   },
 });
 
