@@ -21,6 +21,7 @@
             @change="acceptMarketing = $event.target.checked"
             label="I would like to receive occasional product updates and announcements"
           />
+          <provet-divider></provet-divider>
           <provet-button type="submit" expand variant="primary">Sign up</provet-button>
         </provet-stack>
       </form>
@@ -33,6 +34,7 @@ import '@provetcloud/web-components/lib/Stack';
 import '@provetcloud/web-components/lib/Button';
 import '@provetcloud/web-components/lib/Card';
 import '@provetcloud/web-components/lib/Checkbox';
+import '@provetcloud/web-components/lib/Divider';
 
 import { useForm, useField } from 'vee-validate';
 import { useSignupSchema } from '~/composables/useSignupSchema';
