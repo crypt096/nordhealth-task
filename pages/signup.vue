@@ -66,6 +66,7 @@ const { value: acceptMarketing } = useField<boolean>('acceptMarketing');
 const onSubmit = handleSubmit(async values => {
   loading.value = true;
   try {
+    localStorage.setItem('signup-data', JSON.stringify(values));
     await new Promise(resolve => setTimeout(resolve, 2000));
     await router.push('/success');
   } finally {
