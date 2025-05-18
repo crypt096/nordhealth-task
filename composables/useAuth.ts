@@ -3,7 +3,6 @@ import { ref, computed } from 'vue';
 const email = ref<string | null>(null);
 
 export function useAuth() {
-  // Load once from localStorage (can be called during app boot)
   function loadFromStorage() {
     const data = localStorage.getItem('signup-data');
     if (data) {
