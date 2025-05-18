@@ -79,7 +79,7 @@ const onSubmit = handleSubmit(async values => {
   loading.value = true;
   try {
     localStorage.setItem('signup-data', JSON.stringify(values));
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
     await router.push('/success');
   } finally {
     loading.value = false;
