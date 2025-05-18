@@ -1,5 +1,5 @@
 <template>
-  <provet-stack class="n-container-xxs" style="margin: var(--n-space-xl) auto">
+  <provet-stack class="n-container-xs" style="margin: var(--n-space-xl) auto">
     <provet-card>
       <h1 slot="header">Account Created Successfully</h1>
 
