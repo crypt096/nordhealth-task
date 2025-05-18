@@ -1,6 +1,7 @@
 <template>
   <provet-input
     v-model="password"
+    ref="inputRef"
     :id="inputId"
     :type="isPasswordVisible ? 'text' : 'password'"
     :label="label"
@@ -28,11 +29,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import '@provetcloud/web-components/lib/Input';
 import '@provetcloud/web-components/lib/Button';
 import '@provetcloud/web-components/lib/Icon';
 import '@provetcloud/web-components/lib/Tooltip';
+import { useField } from 'vee-validate';
 
 interface InputProps {
   modelValue: string;
@@ -47,23 +49,27 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
 }>();
 
-const password = ref(modelValue);
+const inputRef = ref<HTMLElement | null>(null);
+const field = useField<string | undefined>(label.toLowerCase().replace(/\s+/g, ''));
+
 const isPasswordVisible = ref(false);
 const inputId = useId();
 
-watch(
-  () => modelValue,
-  val => {
-    if (val !== password.value) password.value = val;
-  }
-);
-
-watch(password, val => {
-  if (val !== modelValue) emit('update:modelValue', val);
+const password = computed({
+  get: () => modelValue,
+  set: value => emit('update:modelValue', value),
 });
 
 const togglePasswordVisibility = () => {
   isPasswordVisible.value = !isPasswordVisible.value;
+
+  requestAnimationFrame(() => {
+    const input = inputRef.value?.shadowRoot?.querySelector('input') as HTMLInputElement | null;
+    input?.blur();
+
+    // Prevent re-validation caused by input refocus blur
+    field?.meta?.touched && field?.resetField({ touched: false });
+  });
 };
 
 const passwordToggleLabel = computed(() =>
