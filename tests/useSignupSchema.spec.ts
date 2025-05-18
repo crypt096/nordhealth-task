@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { useSignupSchema } from '@/composables/useSignupSchema';
+import { useSignupSchema } from '~/composables/useSignupSchema';
 
 describe('useSignupSchema', () => {
   const schema = useSignupSchema();

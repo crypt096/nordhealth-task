@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { useAuth } from '@/composables/useAuth'; // adjust the path accordingly
+import { useAuth } from '~/composables/useAuth'; // adjust the path accordingly
 
 describe('useAuth composable', () => {
   beforeEach(() => {
