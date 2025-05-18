@@ -15,7 +15,7 @@
       aria-label="Toggle password visibility"
       :aria-describedby="`${inputId}-tooltip`"
       :aria-pressed="isPasswordVisible.toString()"
-      @click="togglePasswordVisibility"
+      @click.prevent="togglePasswordVisibility"
     >
       <provet-icon
         :name="isPasswordVisible ? 'interface-edit-off' : 'interface-edit-on'"
