@@ -54,10 +54,12 @@ import CheckboxField from '~/components/CheckboxField.vue';
 
 import { useForm, useField } from 'vee-validate';
 import { useSignupSchema } from '~/composables/useSignupSchema';
+import { useAuth } from '~/composables/useAuth';
 
 const loading = ref(false);
 const router = useRouter();
 const schema = useSignupSchema();
+const { signUp } = useAuth();
 
 const { handleSubmit } = useForm({
   validationSchema: schema,
@@ -78,8 +80,8 @@ const { value: acceptMarketing } = useField<boolean>('acceptMarketing');
 const onSubmit = handleSubmit(async values => {
   loading.value = true;
   try {
-    localStorage.setItem('signup-data', JSON.stringify({ email: values.email, acceptMarketing: values.acceptMarketing }));
     await new Promise(resolve => setTimeout(resolve, 1000));
+    signUp(values.email);
     await router.push('/success');
   } finally {
     loading.value = false;

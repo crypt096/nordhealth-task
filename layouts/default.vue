@@ -2,7 +2,10 @@
   <provet-stack>
     <provet-header>
       <h1 class="n-typescale-l">NordHealth Task</h1>
-      <ThemeToggle slot="end" />
+      <provet-stack slot="end" direction="horizontal" gap="none">
+        <ThemeToggle />
+        <UserDropdown />
+      </provet-stack>
     </provet-header>
     <main>
       <slot />
@@ -35,4 +38,6 @@ import '@provetcloud/web-components/lib/Header';
 import '@provetcloud/web-components/lib/Footer';
 import '@provetcloud/web-components/lib/Stack';
 import '@provetcloud/web-components/lib/Icon';
+import ThemeToggle from '~/components/ThemeToggle.vue';
+import UserDropdown from '~/components/UserDropdown.vue';
 </script>
