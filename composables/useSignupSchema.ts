@@ -17,7 +17,11 @@ export const useSignupSchema = () => {
       ),
     confirmPassword: string()
       .required('Confirm your password')
-      .oneOf([ref('password')], 'Passwords must match'),
+      .test('passwords-match', 'Passwords must match', function(value) {
+        const { password } = this.parent;
+        if (!password) return true;
+        return value === password;
+      }),
     acceptMarketing: boolean(),
   });
 };
