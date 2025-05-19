@@ -12,43 +12,65 @@ describe('Signup page', () => {
   });
 
   it('shows validation errors when submitting empty form', () => {
-    const email = 'test@example.com';
-
     cy.get('provet-button').contains('Sign up').click();
 
-    const emailField = cy.get('provet-input[label="Email"]').shadow().find('input')
+    const emailField = cy.get('#v-0-0').shadow().find('input');
     emailField.should('have.value', '');
     emailField.should('have.attr', 'aria-invalid', 'true');
+
+    const passwordField = cy.get('#v-0-1').shadow().find('input');
+    passwordField.should('have.value', '');
+    passwordField.should('have.attr', 'aria-invalid', 'true');
+
+    const confirmPasswordField = cy.get('#v-0-2').shadow().find('input');
+    confirmPasswordField.should('have.value', '');
+    confirmPasswordField.should('have.attr', 'aria-invalid', 'true');
   });
-  //
-  // it('shows validation errors for invalid input', () => {
-  //   // Type into EmailField
-  //   cy.get('provet-input[label="Email"] input').type('invalid-email');
-  //   cy.get('provet-input[label="Password"] input').type('Password123!');
-  //   cy.get('provet-input[label="Confirm password"] input').type('Different123!');
-  //
-  //   cy.get('provet-button').contains('Sign up').click();
-  //
-  //   cy.contains('Enter a valid email').should('exist');
-  //   cy.contains('Passwords must match').should('exist');
-  // });
-  //
-  // it('submits form and redirects to success page', () => {
-  //   const email = 'test@example.com';
-  //
-  //   cy.get('provet-input[label="Email"] input').type(email);
-  //   cy.get('provet-input[label="Password"] input').type('Password123!');
-  //   cy.get('provet-input[label="Confirm password"] input').type('Password123!');
-  //   cy.get('provet-checkbox').click();
-  //
-  //   cy.get('provet-button').contains('Sign up').click();
-  //
-  //   // Wait for redirect and check success
-  //   cy.url({ timeout: 5000 }).should('include', '/success');
-  //
-  //   cy.window().then(win => {
-  //     const data = JSON.parse(win.localStorage.getItem('signup-data') || '{}');
-  //     expect(data.email).to.equal(email);
-  //   });
-  // });
+
+  it('successfully submits form with valid inputs and redirects', () => {
+    const email = 'valid@example.com';
+    const password = 'ValidPass123!';
+
+    cy.get('#v-0-0').shadow().find('input').type(email);
+    cy.get('#v-0-1').shadow().find('input').type(password);
+    cy.get('#v-0-2').shadow().find('input').type(password);
+    cy.get('provet-checkbox').shadow().find('input[type="checkbox"]').check({ force: true });
+    cy.get('[variant="primary"]').click();
+    cy.url({ timeout: 5000 }).should('include', '/success');
+
+    cy.window().then(win => {
+      const saved = JSON.parse(win.localStorage.getItem('signup-data') || '{}');
+      expect(saved.email).to.equal(email);
+    });
+  });
+
+  it('shows validation error when passwords do not match', () => {
+    cy.get('#v-0-0').shadow().find('input').type('test@example.com');
+    cy.get('#v-0-1').shadow().find('input').type('Password123!');
+    cy.get('#v-0-2').shadow().find('input').type('DifferentPass456!');
+
+    cy.get('[variant="primary"]').click();
+
+    cy.get('#v-0-2').should('have.attr', 'error', 'Passwords must match');
+  });
+
+  it('shows loading state on submit', () => {
+    const email = 'loading@example.com';
+    const password = 'LoadingPass123!';
+
+    cy.get('#v-0-0').shadow().find('input').type(email);
+    cy.get('#v-0-1').shadow().find('input').type(password);
+    cy.get('#v-0-2').shadow().find('input').type(password);
+
+    cy.get('provet-checkbox').shadow().find('input[type="checkbox"]').check({ force: true });
+
+    cy.window().then(win => {
+      const originalSetTimeout = win.setTimeout;
+      cy.stub(win, 'setTimeout').callsFake((cb, delay) => originalSetTimeout(cb, delay));
+    });
+
+    cy.get('provet-button').contains('Sign up').click();
+    cy.get('[variant="primary"]').should('have.attr', 'loading');
+  });
+
 });
