@@ -21,8 +21,22 @@ describe('Layout', () => {
       .should('have.attr', 'href', 'https://github.com/crypt096/nordhealth-task')
       .should('have.attr', 'target', '_blank');
 
-    cy.get('provet-footer')
-      .contains('© 2025 Aleksandar Cvjetan')
-      .should('be.visible');
+    cy.get('provet-footer').contains('© 2025 Aleksandar Cvjetan').should('be.visible');
   });
+
+  it('toggles theme when ThemeToggle is clicked', () => {
+    cy.window().then((win) => {
+      const initialMode = win.localStorage.getItem('color-mode');
+
+      cy.get('provet-header > provet-stack > provet-button').click();
+
+      cy.wait(100);
+
+      cy.window().then((winAfter) => {
+        const newMode = winAfter.localStorage.getItem('color-mode');
+        expect(newMode).to.not.equal(initialMode);
+      });
+    });
+  });
+
 });
