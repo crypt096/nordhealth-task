@@ -25,18 +25,28 @@ describe('Layout', () => {
   });
 
   it('toggles theme when ThemeToggle is clicked', () => {
-    cy.window().then((win) => {
+    cy.window().then(win => {
       const initialMode = win.localStorage.getItem('color-mode');
 
       cy.get('provet-header > provet-stack > provet-button').click();
 
       cy.wait(100);
 
-      cy.window().then((winAfter) => {
+      cy.window().then(winAfter => {
         const newMode = winAfter.localStorage.getItem('color-mode');
         expect(newMode).to.not.equal(initialMode);
       });
     });
   });
 
+  it('Renders dropdown when user is signed in', () => {
+    cy.window().then(win => {
+      win.localStorage.setItem('signup-data', JSON.stringify({ email: 'test@example.com' }));
+    });
+    cy.visit('http://localhost:3000/');
+
+    it('renders provet-dropdown when user is signed in', () => {
+      cy.get('provet-dropdown').should('exist');
+    });
+  });
 });
