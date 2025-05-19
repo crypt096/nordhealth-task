@@ -2,6 +2,8 @@
 
 A client-side-only Nuxt 3 application built using the [Provet Cloud Design System](https://www.nordhealth.design/), implementing a fully functional signup flow with validation, theming, and user state persistence.
 
+---
+
 ## ✨ Features
 
 - 🔒 **Signup Form**
@@ -24,22 +26,42 @@ A client-side-only Nuxt 3 application built using the [Provet Cloud Design Syste
     - GitHub repo link in the footer
     - User dropdown shown when signed up
 
-- 🧪 **E2E Testing with Cypress**
-    - Full test coverage for signup flow, validation, theme toggling, and layout rendering
+- 🧪 **Testing**
+    - Unit tests using Vitest
+    - End-to-end tests with Cypress covering signup flow, validation, theming, and layout
+
+---
 
 ## 📸 Preview
 
-> Coming soon: screenshots or live link
+> Coming soon: screenshots or live demo link
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- npm
+- Node.js 18 or higher
+- npm (comes with Node.js)
 
 ### Setup
 
 ```bash
 npm install
 npm run dev
+```
+
+## 🧪 Running Tests
+
+Unit Tests
+- Run all unit tests once:
+```aiignore
+npm run test:unit
+```
+
+End-to-End (E2E) Tests with Cypress
+- Open Cypress interactive test runner:
+```aiignore
+npm run test:e2e
+```
