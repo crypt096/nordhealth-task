@@ -65,3 +65,10 @@ End-to-End (E2E) Tests with Cypress
 ```aiignore
 npm run test:e2e
 ```
+
+## 👤 Author
+
+**Aleksandar Cvjetan**
+
+- GitHub: [crypt096](https://github.com/crypt096)
+- LinkedIn: [linkedin.com/in/acvjetan](https://www.linkedin.com/in/acvjetan)
