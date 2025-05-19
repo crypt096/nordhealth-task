@@ -11,8 +11,8 @@
     "lint": "eslint . --ext .ts,.vue --ignore-path .eslintignore",
     "lint:fix": "eslint . --ext .ts,.vue --fix",
     "format": "prettier --write .",
-    "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:unit": "vitest",
+    "test:e2e": "cypress open"
   },
   "dependencies": {
     "@provetcloud/css": "^1.1.0",
