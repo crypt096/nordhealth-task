@@ -4,10 +4,7 @@ describe('Success page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/success', {
       onBeforeLoad(win) {
-        win.localStorage.setItem(
-          'signup-data',
-          JSON.stringify({ email: fakeEmail })
-        );
+        win.localStorage.setItem('signup-data', JSON.stringify({ email: fakeEmail }));
       },
     });
   });

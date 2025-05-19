@@ -72,5 +72,4 @@ describe('Signup page', () => {
     cy.get('provet-button').contains('Sign up').click();
     cy.get('[variant="primary"]').should('have.attr', 'loading');
   });
-
 });
