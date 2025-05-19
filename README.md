@@ -1,6 +1,6 @@
 # 🐾 NordHealth Task
 
-A client-side-only Nuxt 3 application built using the [Provet Cloud Design System](https://www.nordhealth.design/), implementing a fully functional signup flow with validation, theming, and user state persistence.
+A client-side-only Nuxt 3 application built using the [Provet Cloud Design System](https://provetcloud.design/), implementing a fully functional signup flow with validation, theming, and user state persistence.
 
 ---
 
