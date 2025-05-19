@@ -32,12 +32,6 @@ A client-side-only Nuxt 3 application built using the [Provet Cloud Design Syste
 
 ---
 
-## 📸 Preview
-
-> Coming soon: screenshots or live demo link
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
